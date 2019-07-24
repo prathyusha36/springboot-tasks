@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@ControllerAdvice
 @RequestMapping(value="api/v1")
 public class TrackController {
     private TrackRepository trackRepository;
@@ -64,8 +65,10 @@ public class TrackController {
     public ResponseEntity<?> getTrackByName(@RequestParam(value="name") String name) {
         Track getTrack=(Track)trackService.findByName(name);
        return new ResponseEntity<Track>(getTrack,HttpStatus.OK);
-
-
+    }
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<?> notFoundException(final UserNotFoundException e) {
+        return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
     }
 
 }
