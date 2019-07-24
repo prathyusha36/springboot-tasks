@@ -1,4 +1,4 @@
 
-3. Add an endpoint to search trackByName. Understand @Query and parameter passing to
-@Query
+
+4. Generate API documentation using Swagger 2
 
