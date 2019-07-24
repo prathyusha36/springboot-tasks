@@ -2,6 +2,7 @@ package com.stackroute.muzixApp.controller;
 
 import com.stackroute.muzixApp.domain.Track;
 import com.stackroute.muzixApp.exception.UserAlreadyExistsException;
+import com.stackroute.muzixApp.exception.UserNotFoundException;
 import com.stackroute.muzixApp.repository.TrackRepository;
 import com.stackroute.muzixApp.service.TrackService;
 import org.springframework.http.HttpStatus;
@@ -37,8 +38,16 @@ public class TrackController {
     }
     @GetMapping("track/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
-        return new ResponseEntity<Track>(trackService.getTrackById(id), HttpStatus.OK);
-    }
+        ResponseEntity responseEntity;
+        try {
+            
+            responseEntity = new ResponseEntity<Track>(trackService.getTrackById(id), HttpStatus.CREATED);
+        }
+        catch(UserNotFoundException e) {
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+            return responseEntity;
+        }
 
     @DeleteMapping("track/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable("id") int id) {

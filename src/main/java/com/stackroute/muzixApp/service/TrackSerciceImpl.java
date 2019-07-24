@@ -2,6 +2,7 @@ package com.stackroute.muzixApp.service;
 
 import com.stackroute.muzixApp.domain.Track;
 import com.stackroute.muzixApp.exception.UserAlreadyExistsException;
+import com.stackroute.muzixApp.exception.UserNotFoundException;
 import com.stackroute.muzixApp.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,10 @@ public class TrackSerciceImpl implements TrackService{
     }
 
     @Override
-    public Track getTrackById(int trackId) {
-
+    public Track getTrackById(int trackId) throws UserNotFoundException {
+       if(!trackRepository.findById(trackId).isPresent()) {
+           throw new UserNotFoundException("user not found");
+       }
        return trackRepository.findById(trackId).get();
     }
 
