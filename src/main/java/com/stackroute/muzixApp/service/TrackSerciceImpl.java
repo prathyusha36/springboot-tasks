@@ -48,4 +48,11 @@ public class TrackSerciceImpl implements TrackService{
     public Track updateUser(Track track) {
        return trackRepository.save(track);
     }
+
+    @Override
+    public List<Track> findByName(String trackName) {
+        return trackRepository.findByName(trackName);
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.stackroute.muzixApp.controller;
 
 import com.stackroute.muzixApp.domain.Track;
 import com.stackroute.muzixApp.exception.UserAlreadyExistsException;
+import com.stackroute.muzixApp.repository.TrackRepository;
 import com.stackroute.muzixApp.service.TrackService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping(value="api/v1")
 public class TrackController {
+    private TrackRepository trackRepository;
     private TrackService trackService;
     public TrackController(TrackService trackService) {
         this.trackService=trackService;
     }
+
     @PostMapping("track")
     public ResponseEntity<?> saveUser(@RequestBody Track track) {
         ResponseEntity responseEntity;
@@ -48,6 +51,12 @@ public class TrackController {
         trackService.updateUser(track);
         return new ResponseEntity<Track>(track, HttpStatus.OK);
     }
+    @RequestMapping(method=RequestMethod.GET)
+    public ResponseEntity<?> getTrackByName(@RequestParam(value="name") String name) {
+        Track getTrack=(Track)trackService.findByName(name);
+       return new ResponseEntity<Track>(getTrack,HttpStatus.OK);
 
+
+    }
 
 }

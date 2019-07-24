@@ -1,2 +1,4 @@
-Task2 :Use h2-console to view in-memory data
+
+3. Add an endpoint to search trackByName. Understand @Query and parameter passing to
+@Query
 
