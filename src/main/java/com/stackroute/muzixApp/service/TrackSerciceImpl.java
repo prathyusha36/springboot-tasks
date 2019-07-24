@@ -19,18 +19,17 @@ public class TrackSerciceImpl implements TrackService{
     @Override
     public Track saveTrack(Track track) throws UserAlreadyExistsException {
         if(trackRepository.existsById(track.getTrackId())) {
-            throw new UserAlreadyExistsException("user already exists");
+            throw new UserAlreadyExistsException();
         }
        Track savedTrack=trackRepository.save(track);
        if(savedTrack==null) {
-           throw new UserAlreadyExistsException("user already exists");
+           throw new UserAlreadyExistsException();
        }
         return savedTrack;
     }
 
     @Override
     public List<Track> getAllTracks() {
-
         return trackRepository.findAll();
     }
 
@@ -42,7 +41,7 @@ public class TrackSerciceImpl implements TrackService{
     @Override
     public Track getTrackById(int trackId) throws UserNotFoundException {
        if(!trackRepository.findById(trackId).isPresent()) {
-           throw new UserNotFoundException("user not found");
+           throw new UserNotFoundException();
        }
        return trackRepository.findById(trackId).get();
     }
@@ -56,6 +55,4 @@ public class TrackSerciceImpl implements TrackService{
     public List<Track> findByName(String trackName) {
         return trackRepository.findByName(trackName);
     }
-
-
 }
