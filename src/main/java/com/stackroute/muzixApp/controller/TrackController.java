@@ -40,7 +40,7 @@ public class TrackController {
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
         ResponseEntity responseEntity;
         try {
-            
+
             responseEntity = new ResponseEntity<Track>(trackService.getTrackById(id), HttpStatus.CREATED);
         }
         catch(UserNotFoundException e) {
