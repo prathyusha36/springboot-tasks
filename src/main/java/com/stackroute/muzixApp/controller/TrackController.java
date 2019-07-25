@@ -3,6 +3,7 @@ package com.stackroute.muzixApp.controller;
 import com.stackroute.muzixApp.domain.Track;
 import com.stackroute.muzixApp.exception.UserAlreadyExistsException;
 import com.stackroute.muzixApp.exception.UserNotFoundException;
+import com.stackroute.muzixApp.service.TrackSerciceImpl;
 import com.stackroute.muzixApp.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,10 +15,10 @@ import java.util.List;
 @RestController
 @RequestMapping(value="api/v1")
 public class TrackController {
-    @Autowired
     private TrackService trackService;
-
+    private TrackSerciceImpl trackSercice;
     public TrackController(TrackService trackService) {
+
         this.trackService=trackService;
     }
 
