@@ -6,9 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class Track {
     @Id
-    int trackId;
-    String trackName;
-    String comments;
+    private int trackId;
+    private String trackName;
+    private String comments;
     public Track() {
 
     }
