@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping(value="api/v1")
 public class TrackController {
     private TrackService trackService;
-    private TrackSerciceImpl trackSercice;
+   
     @Autowired
     public TrackController(TrackService trackService) {
 
@@ -31,7 +31,7 @@ public class TrackController {
         return responseEntity;
     }
 
-    @GetMapping("track")
+    @GetMapping("tracks")
     public ResponseEntity<?> getAllTracks() {
         return new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
     }
