@@ -21,7 +21,7 @@ public class TrackSerciceImpl implements TrackService{
     String trackName;
     @Value("${Track.comments}")
     String comments;
-    TrackRepository trackRepository;
+    private TrackRepository trackRepository;
     @Autowired
     public TrackSerciceImpl(TrackRepository trackRepository) {
         this.trackRepository=trackRepository;
