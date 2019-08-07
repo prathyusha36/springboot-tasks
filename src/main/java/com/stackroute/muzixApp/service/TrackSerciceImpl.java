@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class TrackSerciceImpl implements TrackService{
-    TrackRepository trackRepository;
+    private TrackRepository trackRepository;
     @Autowired
     public TrackSerciceImpl(TrackRepository trackRepository) {
         this.trackRepository=trackRepository;
