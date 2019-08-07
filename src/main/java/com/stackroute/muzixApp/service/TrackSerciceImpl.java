@@ -45,7 +45,7 @@ public class TrackSerciceImpl implements TrackService{
     }
 
     @Override
-    public Track updateUser(Track track) {
+    public Track updateTrack(Track track) {
        return trackRepository.save(track);
     }
 }
