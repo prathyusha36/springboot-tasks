@@ -17,6 +17,7 @@ import java.util.List;
 public class TrackController {
     private TrackService trackService;
     private TrackSerciceImpl trackSercice;
+   @Autowired
     public TrackController(TrackService trackService) {
 
         this.trackService=trackService;
