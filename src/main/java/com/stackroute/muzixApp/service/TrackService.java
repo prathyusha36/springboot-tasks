@@ -11,6 +11,6 @@ public interface TrackService {
     public List<Track> getAllTracks() ;
     public void deleteTrack(int trackId);
     public Track getTrackById(int trackId) throws UserNotFoundException;
-    public Track updateUser(Track track);
+    public Track updateTrack(Track track);
     public List<Track> findByName(String trackName);
 }
