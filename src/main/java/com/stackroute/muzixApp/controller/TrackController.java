@@ -61,7 +61,7 @@ public class TrackController {
 
     @PutMapping("track")
     public ResponseEntity<?> updateUser(@RequestBody Track track) {
-        trackService.updateUser(track);
+        trackService.updateTrack(track);
         return new ResponseEntity<Track>(track, HttpStatus.OK);
     }
 
