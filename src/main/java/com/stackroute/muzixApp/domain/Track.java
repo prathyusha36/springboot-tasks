@@ -18,8 +18,8 @@ import javax.persistence.Id;
 public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int trackId;
-    String name;
-    String comments;
+    private int trackId;
+    private String name;
+    private String comments;
 
 }
