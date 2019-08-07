@@ -23,7 +23,7 @@ public class TrackController {
     }
 
     @PostMapping("track")
-    public ResponseEntity<?> saveUser(@RequestBody Track track) throws UserAlreadyExistsException{
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws UserAlreadyExistsException{
         ResponseEntity responseEntity;
         trackService.saveTrack(track);
         responseEntity = new ResponseEntity<String>("successfully created", HttpStatus.CREATED);
@@ -31,25 +31,25 @@ public class TrackController {
     }
 
     @GetMapping("track")
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<?> getAllTracks() {
         return new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
     }
 
     @GetMapping("track/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable("id") int id)throws UserNotFoundException {
+    public ResponseEntity<?> getTrackById(@PathVariable("id") int id)throws UserNotFoundException {
         ResponseEntity responseEntity;
         responseEntity = new ResponseEntity<Track>(trackService.getTrackById(id), HttpStatus.CREATED);
         return responseEntity;
         }
 
     @DeleteMapping("track/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteTrack(@PathVariable("id") int id) {
         trackService.deleteTrack(id);
         return new ResponseEntity<String>("deleted", HttpStatus.FORBIDDEN);
     }
 
     @PutMapping("track")
-    public ResponseEntity<?> updateUser(@RequestBody Track track) {
+    public ResponseEntity<?> updateTrack(@RequestBody Track track) {
         trackService.updateTrack(track);
         return new ResponseEntity<Track>(track, HttpStatus.OK);
     }
